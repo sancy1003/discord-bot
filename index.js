@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 const fs = require("fs");
-const prefix = "#";
+const prefix = "&";
 
 client.commands = new Collection();
 
