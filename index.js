@@ -19,8 +19,8 @@ client.commands.load = (dir) => {
 client.commands.load(__dirname + "/commands");
 
 client.on("ready", () => {
-  client.user.setActivity(`&help`, {
-    type: "WATCHING",
+  client.user.setActivity(`나는 반딧불`, {
+    type: "LISTENING",
   });
   console.log(`Logged in as ${client.user.tag}!`);
 });

@@ -13,6 +13,15 @@ const commands = [
         .setDescription("닉네임을 입력하세요.")
         .setRequired(true)
     ),
+  new SlashCommandBuilder()
+    .setName("날씨")
+    .setDescription("오늘 날씨를 조회합니다.")
+    .addStringOption((option) =>
+      option
+        .setName("지역명")
+        .setDescription("구/시/군 단위의 지역명 ex) 동대문구")
+        .setRequired(true)
+    ),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);
