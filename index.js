@@ -6,7 +6,6 @@ const client = new Client({
 });
 
 const fs = require("fs");
-const prefix = "#";
 
 client.commands = new Collection();
 
@@ -20,19 +19,21 @@ client.commands.load = (dir) => {
 client.commands.load(__dirname + "/commands");
 
 client.on("ready", () => {
+  client.user.setActivity(`나는 반딧불`, {
+    type: "LISTENING",
+  });
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("message", (msg) => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  if (msg.content.slice(0, prefix.length) !== prefix) return;
+// client.on("message", (msg) => {
+//   if (msg.author.bot) return;
+// });
 
-  const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  let cmd = client.commands.get(command);
-  if (cmd) cmd.run(client, msg, args);
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) return;
+  const { commandName, options } = interaction;
+  let cmd = client.commands.get(commandName);
+  if (cmd) await cmd.run(client, interaction, options.data);
 });
 
 client.login(process.env.DISCORD_TOKKEN);
