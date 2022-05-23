@@ -5,16 +5,15 @@ const helpEmbed = new MessageEmbed()
   .setColor("#a2e90b")
   .setTitle("명령어")
   .addFields({
-    name: "- &피파 볼타 [닉네임]",
+    name: "- &볼타 [닉네임]",
     value: "최근 볼타 10경기 전적 불러오기",
     inline: true,
   });
 
-const getVoltaHistory = async (channel, msg, args) => {
+const getVoltaHistory = async (interaction, nickname) => {
   const voltaEmbed = new MessageEmbed().setColor("#a2e90b");
-  const userAccessId = await getUserAccessId(args[1]);
-  if (!userAccessId.accessId)
-    return msg.reply(`해당 유저가 존재하지 않습니다.`);
+  const userAccessId = await getUserAccessId(nickname);
+  if (!userAccessId.accessId) return interaction.reply("해당 유저가 없습니다.");
   const matchList = await getUserVoltaHistory(userAccessId.accessId);
   let matchText = "";
 
@@ -31,7 +30,7 @@ const getVoltaHistory = async (channel, msg, args) => {
     } ${match.result} (⭐ ${match.rating.toFixed(2)})${"\n```"}`;
   }
 
-  voltaEmbed.setTitle(`:soccer: ${args[1]} 최근 볼타 10경기`).addFields({
+  voltaEmbed.setTitle(`:soccer: ${nickname} 최근 볼타 10경기`).addFields({
     name: `${matchList.length}전 ${
       matchList.filter((v) => v.result === "승").length
     }승 ${matchList.filter((v) => v.result === "무").length}무 ${
@@ -40,21 +39,14 @@ const getVoltaHistory = async (channel, msg, args) => {
     value: matchText,
   });
 
-  return channel.send({
+  return interaction.reply({
     embeds: [voltaEmbed],
   });
 };
 
-exports.run = (client, msg, args) => {
-  const channel = client.channels.cache.get(msg.channel.id);
-  if (args.length < 2) return channel.send({ embeds: [helpEmbed] });
-  switch (args[0]) {
-    case "볼타":
-      getVoltaHistory(channel, msg, args);
-      break;
-    default:
-      return channel.send({ embeds: [helpEmbed] });
-  }
+exports.run = (client, interaction, data) => {
+  const nickname = data[0].value;
+  return getVoltaHistory(interaction, nickname);
 };
 
-exports.name = "피파";
+exports.name = "볼타";
