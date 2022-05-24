@@ -31,6 +31,9 @@ const commands = [
         .setDescription("듣고싶은 노래명을 입력해주세요.")
         .setRequired(true)
     ),
+  new SlashCommandBuilder()
+    .setName("다음")
+    .setDescription("노래를 스킵합니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);

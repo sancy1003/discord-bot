@@ -1,11 +1,3 @@
-const { QueryType } = require("discord-player");
-const {
-  VoiceConnectionStatus,
-  joinVoiceChannel,
-  createAudioPlayer,
-} = require("@discordjs/voice");
-const ytdl = require("ytdl-core-discord");
-
 const sing = async (client, interaction, name) => {
   let user = await interaction.member.fetch();
   let channel = await user.voice.channel;

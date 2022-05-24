@@ -74,7 +74,7 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
   const { commandName, options } = interaction;
   let cmd = client.commands.get(commandName);
-  if (cmd) await cmd.run(client, interaction, options.data);
+  if (cmd) await cmd.run(client, interaction, options ? options.data : null);
 });
 
 client.login(process.env.DISCORD_TOKKEN);
