@@ -34,6 +34,9 @@ const commands = [
   new SlashCommandBuilder()
     .setName("다음")
     .setDescription("노래를 스킵합니다."),
+  new SlashCommandBuilder()
+    .setName("비워")
+    .setDescription("노래를 재생 목록을 비웁니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);
