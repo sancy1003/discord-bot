@@ -22,6 +22,15 @@ const commands = [
         .setDescription("구/시/군 단위의 지역명 ex) 동대문구")
         .setRequired(true)
     ),
+  new SlashCommandBuilder()
+    .setName("불러")
+    .setDescription("노래를 재생합니다.")
+    .addStringOption((option) =>
+      option
+        .setName("노래명")
+        .setDescription("듣고싶은 노래명을 입력해주세요.")
+        .setRequired(true)
+    ),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);
