@@ -6,7 +6,7 @@ const skip = async (client, interaction) => {
   if (!queue || !queue.playing)
     return interaction
       .reply({
-        content: `재생중인 노래가 없네요.`,
+        content: `재생중인 음악이 없네요.`,
         ephemeral: true,
       })
       .catch((e) => {});
@@ -15,7 +15,7 @@ const skip = async (client, interaction) => {
 
   const embed = new MessageEmbed()
     .setColor("#dfff70")
-    .setTitle("😭 노래를 스킵했어요.");
+    .setTitle("😭 음악을 스킵했어요.");
 
   return interaction
     .reply({

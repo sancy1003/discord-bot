@@ -24,19 +24,19 @@ const commands = [
     ),
   new SlashCommandBuilder()
     .setName("불러")
-    .setDescription("노래를 재생합니다.")
+    .setDescription("음악을 재생합니다.")
     .addStringOption((option) =>
       option
-        .setName("노래명")
-        .setDescription("듣고싶은 노래명을 입력해주세요.")
+        .setName("음악명")
+        .setDescription("듣고싶은 음악명을 입력해주세요.")
         .setRequired(true)
     ),
   new SlashCommandBuilder()
     .setName("다음")
-    .setDescription("노래를 스킵합니다."),
+    .setDescription("음악을 스킵합니다."),
   new SlashCommandBuilder()
     .setName("비워")
-    .setDescription("노래를 재생 목록을 비웁니다."),
+    .setDescription("음악을 재생 목록을 비웁니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);

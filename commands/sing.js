@@ -5,7 +5,7 @@ const sing = async (client, interaction, name) => {
     interaction.reply("음성 채널에서만 사용 가능한 기능입니다.");
   }
 
-  interaction.reply({ content: `음악 검색중... 🎧` }).catch((e) => {});
+  interaction.reply({ content: `🔍 음악 검색중... ` }).catch((e) => {});
 
   const queue = await client.player.createQueue(interaction.guild, {
     leaveOnEnd: false,

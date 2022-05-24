@@ -45,8 +45,8 @@ player.on("trackAdd", (queue, track) => {
 player.on("queueEnd", (queue) => {
   const embed = new MessageEmbed()
     .setColor("#dfff70")
-    .setTitle("🤗 노래를 다 들었어요.")
-    .setDescription(`다음 노래를 추가해주세요.`);
+    .setTitle("🤗 음악을 다 들었어요.")
+    .setDescription(`다음 음악을 추가해주세요.`);
   queue.metadata
     .send({
       embeds: [embed],
