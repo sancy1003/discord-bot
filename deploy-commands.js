@@ -40,6 +40,9 @@ const commands = [
   new SlashCommandBuilder()
     .setName("목록")
     .setDescription("음악 재생 목록을 보여줍니다."),
+  new SlashCommandBuilder()
+    .setName("나가")
+    .setDescription("음악 재생 중단합니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);

@@ -42,17 +42,17 @@ player.on("trackAdd", (queue, track) => {
     .catch((e) => {});
 });
 
-player.on("queueEnd", (queue) => {
-  const embed = new MessageEmbed()
-    .setColor("#dfff70")
-    .setTitle("🤗 음악을 다 들었어요.")
-    .setDescription(`다음 음악을 추가해주세요.`);
-  queue.metadata
-    .send({
-      embeds: [embed],
-    })
-    .catch((e) => {});
-});
+// player.on("queueEnd", (queue) => {
+//   const embed = new MessageEmbed()
+//     .setColor("#dfff70")
+//     .setTitle("🤗 음악을 다 들었어요.")
+//     .setDescription(`다음 음악을 추가해주세요.`);
+//   queue.metadata
+//     .send({
+//       embeds: [embed],
+//     })
+//     .catch((e) => {});
+// });
 
 client.commands.load = (dir) => {
   for (const file of fs.readdirSync(dir)) {
