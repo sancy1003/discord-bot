@@ -29,9 +29,9 @@ const getWeather = async (interaction, local) => {
           : `${todayMonth}월 ${todayDate}일`
       } ${convertNumberLessThanTen(time)}시 ~ ${convertNumberLessThanTen(
         time + 1
-      )}시] 🌞 온도 ${v.find((i) => i.category === "REH").value}˚ / 💦 습도 ${
+      )}시] 🌞온도 ${v.find((i) => i.category === "TMP").value}˚ / 💦습도 ${
         v.find((i) => i.category === "REH").value
-      }% / ☔ 강수량 ${v.find((i) => i.category === "REH").value}%${"\n```"}`;
+      }% / ☔강수량 ${v.find((i) => i.category === "POP").value}%${"\n```"}`;
     }
 
     const weatherEmbed = new MessageEmbed()
