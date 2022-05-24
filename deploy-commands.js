@@ -22,6 +22,27 @@ const commands = [
         .setDescription("구/시/군 단위의 지역명 ex) 동대문구")
         .setRequired(true)
     ),
+  new SlashCommandBuilder()
+    .setName("불러")
+    .setDescription("음악을 재생합니다.")
+    .addStringOption((option) =>
+      option
+        .setName("음악명")
+        .setDescription("듣고싶은 음악명을 입력해주세요.")
+        .setRequired(true)
+    ),
+  new SlashCommandBuilder()
+    .setName("다음")
+    .setDescription("음악을 스킵합니다."),
+  new SlashCommandBuilder()
+    .setName("비워")
+    .setDescription("음악을 재생 목록을 비웁니다."),
+  new SlashCommandBuilder()
+    .setName("목록")
+    .setDescription("음악 재생 목록을 보여줍니다."),
+  new SlashCommandBuilder()
+    .setName("나가")
+    .setDescription("음악 재생 중단합니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);
