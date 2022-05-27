@@ -28,11 +28,7 @@ const skip = async (client, interaction) => {
   const songs = queue.tracks.length;
   const nextSongs = songs > 5 ? `+ **${songs - 5}**개의 다른 음악` : ``;
 
-  embed.setDescription(
-    `재생중 \`${queue.current.title}\`\n\n${tracks
-      .slice(0, 5)
-      .join("\n")}\n\n${nextSongs}`
-  );
+  embed.setDescription(`${tracks.slice(0, 5).join("\n")}\n\n${nextSongs}`);
 
   interaction.reply({ embeds: [embed] }).catch((e) => {});
 
