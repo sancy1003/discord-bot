@@ -14,8 +14,7 @@ const sing = async (client, interaction, name) => {
   });
 
   try {
-    if (!queue.connection)
-      await queue.connect(interaction.member.voice.channel);
+    await queue.connect(interaction.member.voice.channel);
   } catch {
     await client.player.deleteQueue(interaction.guild.id);
     return interaction
