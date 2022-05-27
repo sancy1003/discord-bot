@@ -43,6 +43,9 @@ const commands = [
   new SlashCommandBuilder()
     .setName("나가")
     .setDescription("음악 재생 중단합니다."),
+  new SlashCommandBuilder()
+    .setName("피파쿠폰")
+    .setDescription("피파 인벤 이벤트 쿠폰 게시판 글을 조회합니다."),
 ].map((command) => command.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKKEN);
