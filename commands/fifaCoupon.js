@@ -9,7 +9,6 @@ const getHtml = async () => {
     );
   } catch (error) {
     return interaction.reply(`🤬 쿠폰 조회중 오류가 발생했어요.`);
-    console.error(error);
   }
 };
 
@@ -20,7 +19,7 @@ const getCouponList = async (interaction) => {
   const couponList = [];
   let couponText = "";
 
-  boardList.each(function (i, elem) {
+  boardList.each(function () {
     const elemClassList = $(this).attr("class")
       ? $(this).attr("class").split(" ")
       : [];
