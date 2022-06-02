@@ -14,7 +14,8 @@ const sing = async (client, interaction, name) => {
   });
 
   try {
-    await queue.connect(interaction.member.voice.channel);
+    if (!queue.connection)
+      await queue.connect(interaction.member.voice.channel);
   } catch {
     await client.player.deleteQueue(interaction.guild.id);
     return interaction
@@ -27,10 +28,11 @@ const sing = async (client, interaction, name) => {
       requestedBy: interaction.user,
     })
     .then((x) => {
-      interaction.deleteReply();
       return x.tracks[0];
     });
+
   queue.play(track);
+  interaction.deleteReply();
 };
 
 exports.run = async (client, interaction, data) => {
